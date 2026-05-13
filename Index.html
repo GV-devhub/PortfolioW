@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GV | SQL & Data Analytics Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<header class="navbar">
+  <div class="nav-brand">
+    <span class="logo-circle">GV</span> GV Portfolio
+  </div>
+
+  <nav class="nav-links">
+    <a href="#about">Summary</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Technical Skills</a>
+    <a href="#certifications">Certifications</a>
+    <a href="https://aidivehub.blogspot.com" target="_blank">Blog</a>
+  </nav>
+</header>
+
+
+  <style>
+    /* -----------------------------------
+       GLOBAL THEME — GLASS + BLUE TECH
+    ----------------------------------- */
+    :root {
+      --bg: #0f172a;
+      --bg2: #1e293b;
+      --glass: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.15);
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent2: #818cf8;
+      --radius: 18px;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+      --max-width: 900px;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: linear-gradient(135deg, var(--bg), var(--bg2));
+      color: var(--text);
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* -----------------------------------
+       TOP NAVIGATION BAR
+    ----------------------------------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 28px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.nav-links a {
+  color: var(--text);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.hero {
+  padding-top: 80px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  white-space: nowrap;
+  justify-content: flex-end;
+  max-width: 100%;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  .nav-links {
+    font-size: 0.85rem;
+    gap: 14px;
+  }
+}
+
+
+    .logo-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #22d3ee, #818cf8);
+      color: #0f172a;
+      font-weight: 700;
+      margin-right: 8px;
+      font-size: 0.9rem;
+      transition: 0.3s ease;
+    }
+
+    .logo-circle:hover {
+      transform: rotate(8deg) scale(1.08);
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.45);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: var(--text);
+      font-size: 0.9rem;
+      padding: 6px 12px;
+      border-radius: 999px;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transition: 0.3s ease;
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* -----------------------------------
+       WIDE HERO BANNER
+    ----------------------------------- */
+    .hero {
+      width: 100%;
+      padding: 80px 40px;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(129, 140, 248, 0.15));
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      margin: 10px 0 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-tag {
+      font-size: 0.9rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .hero-text {
+      max-width: 600px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+       .btn {
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: 1px solid var(--border);
+      background: var(--glass);
+      color: var(--text);
+      backdrop-filter: blur(10px);
+      transition: 0.25s ease;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #0f172a;
+      font-weight: 600;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.25);
+    }
+
+  
+    /* -----------------------------------
+       MAIN CONTENT SECTIONS
+    ----------------------------------- */
+    .section {
+      margin: 40px auto;
+      max-width: var(--max-width);
+      background: var(--glass);
+      border-radius: var(--radius);
+      padding: 28px;
+      border: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .section h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #cbd5e1;
+      margin-bottom: 16px;
+    }
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.tool-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  backdrop-filter: blur(14px);
+  transition: 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.tool-card:hover {
+  transform: translateY(-6px);
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 12px 28px rgba(56, 189, 248, 0.25);
+}
+
+.tool-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 12px;
+  filter: invert(1) brightness(2.2) contrast(1.4);
+  transition: 0.3s ease;
+}
+
+.tool-card:hover .tool-icon {
+  transform: scale(1.15);
+  filter: invert(1) brightness(3) contrast(1.6);
+}
+
+.tool-card h3 {
+  margin: 6px 0;
+  font-size: 1rem;
+}
+
+.tool-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+    /* -----------------------------------
+       SKILL BADGES WITH LOGOS
+    ----------------------------------- */
+    .skill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      margin: 4px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.85rem;
+      backdrop-filter: blur(10px);
+      transition: 0.25s ease;
+    }
+
+    .skill-badge:hover {
+      transform: translateY(-3px);
+      background: rgba(56, 189, 248, 0.18);
+      border-color: rgba(56, 189, 248, 0.45);
+      box-shadow: 0 8px 20px rgba(56, 189, 248, 0.25);
+    }
+
+    .skill-icon {
+      width: 20px;
+      height: 20px;
+      filter: invert(1) brightness(2.2) contrast(1.4);
+      transition: 0.25s ease;
+    }
+
+    .skill-badge:hover .skill-icon {
+      transform: scale(1.15);
+      filter: invert(1) brightness(3) contrast(1.6);
+    }
+
+    /* -----------------------------------
+       TABLES (CERTIFICATIONS)
+    ----------------------------------- */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 16px;
+    }
+
+    table th {
+      text-align: left;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      padding-bottom: 10px;
+    }
+
+    table td {
+      vertical-align: top;
+      padding: 10px 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+    }
+
+    .cert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 4px 0;
+    }
+
+    .cert-logo {
+      width: 28px;
+      height: 28px;
+      filter: invert(1) brightness(2.2) contrast(1.4);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+  </style>
+
+
+</head>
+
+<body>
+
+ <!-- HERO -->
+<section class="hero">
+    <h1>Hi, Welcome to my Portfolio Website</h1>
+
+    <p class="hero-text">
+      I transform raw data into clean, reliable insights that support HR, payroll, finance, and security teams.
+    </p>
+
+  
+  </section>
+
+  <!-- SUMMARY -->
+  <section class="section" id="about">
+    <h2>Summary</h2>
+    <p>
+      I’m a SQL & Data Analytics professional specializing in payroll analytics, RBAC access governance,
+      and data validation. I build clean, reliable analytics that support HR, finance, and security teams.
+    </p>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <h2>Projects</h2>
+
+    <div class="project-item">
+      <strong>Domino’s Pizza Sales Analytics – Excel Dashboard</strong>
+      <p>SQL • Excel • RBAC</p>
+      <p>
+        Interactive Excel dashboard built using the Kaggle pizza_sales.csv dataset.
+      </p>
+      <p><a href="https://github.com/GV-devhub/Dominos-Data-Analytics-Project.git">View on GitHub</a></p>
+    </div>
+
+    <div class="project-item">
+      <strong>Domino’s Pizza Sales – Power BI Dashboard</strong>
+      <p>Power BI</p>
+      <p>
+        Designed an interactive Power BI dashboard with star schema, DAX measures, KPI cards, and slicers.
+      </p>
+      <p><a href="https://github.com/GV-devhub/Dominos-Data-Analytics-Project_Dashboard.git">View on GitHub</a></p>
+    </div>
+<div class="project-item">
+  <strong>Aidivehub – Learning Documentation Blog (BRD)</strong>
+  <p>BRD • Blogger • SEO • Documentation</p>
+  <p>
+    Business Requirements Document for a centralized learning blog built on Blogger, 
+    covering objectives, scope, functional & non-functional requirements, platform evaluation, 
+    and process workflows.
+  </p>
+  <p><a href="https://github.com/GV-devhub/BRD.git">View on GitHub</a></p>
+</div>
+  </section>
+
+
+ <section class="section" id="skills">
+  <h2>Technical Skills</h2>
+  <p style="color: var(--muted); margin-bottom: 20px;">
+    Proficient in tools, platforms, and technologies across analytics, automation, HRIS, ERP, and workflow optimization.
+  </p>
+
+  <!-- OPERATING SYSTEMS -->
+  <h3>Operating Systems</h3>
+  <div class="tool-grid">
+    <div class="tool-card">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/windows.svg" class="tool-icon">
+      <h3>Windows</h3>
+      <p>System operations & productivity</p>
+    </div>
+    <div class="tool-card">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/apple.svg" class="tool-icon">
+      <h3>MacOS</h3>
+      <p>System operations & workflow</p>
+    </div>
+  </div>
+
+  <!-- AI TOOLS -->
+  <h3>AI Tools</h3>
+  <div class="tool-grid">
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/amazonaws.svg" class="tool-icon"><h3>Amazon Bedrock</h3><p>AI model orchestration</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/microsoftcopilot.svg" class="tool-icon"><h3>Copilot</h3><p>AI productivity & automation</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/openai.svg" class="tool-icon"><h3>ChatGPT</h3><p>AI assistance & content creation</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/anthropic.svg" class="tool-icon"><h3>Claude</h3><p>AI reasoning & writing</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/google.svg" class="tool-icon"><h3>Gemini</h3><p>AI search & insights</p></div>
+   </div>
+
+  <!-- GOOGLE SUITE -->
+  <h3>Google Suite</h3>
+  <div class="tool-grid">
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" class="tool-icon"><h3>Gmail</h3><p>Email & communication</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googledrive.svg" class="tool-icon"><h3>Google Drive</h3><p>Cloud storage</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googlecloud.svg" class="tool-icon"><h3>Google Docs</h3><p>Document creation</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googlesheets.svg" class="tool-icon"><h3>Google Sheets</h3><p>Data & spreadsheets</p></div>
+        <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googlecalendar.svg" class="tool-icon"><h3>Google Calendar</h3><p>Scheduling</p></div>
+  </div>
+
+  <!-- MS OFFICE -->
+  <h3>MS Office Suite</h3>
+  <div class="tool-grid">
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/microsoftword.svg" class="tool-icon"><h3>Word</h3><p>Documentation</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/microsoftexcel.svg" class="tool-icon"><h3>Excel</h3><p>Data analysis</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/microsoftpowerpoint.svg" class="tool-icon"><h3>PowerPoint</h3><p>Presentations</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/microsoftaccess.svg" class="tool-icon"><h3>MS Access</h3><p>Database management</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/powerautomate.svg" class="tool-icon"><h3>Power Automate</h3><p>Workflow automation</p></div>
+  </div>
+
+  <!-- DATABASES -->
+ <h3>Databases</h3>
+<div class="tool-grid">
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/oracle.svg" class="tool-icon">
+    <h3>Oracle</h3>
+    <p>Enterprise database</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/microsoftsqlserver.svg" class="tool-icon">
+    <h3>SQL Server</h3>
+    <p>Relational DBMS</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/mysql.svg" class="tool-icon">
+    <h3>MySQL</h3>
+    <p>Open‑source DBMS</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/neo4j.svg" class="tool-icon">
+    <h3>Neo4j</h3>
+    <p>Graph database & relationships</p>
+  </div>
+
+</div>
+
+
+  <!-- DB MANAGEMENT -->
+  <h3>DB Management Tools</h3>
+  <div class="tool-grid">
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/oracle.svg" class="tool-icon"><h3>SQL*Plus</h3><p>Oracle CLI</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/toad.svg" class="tool-icon"><h3>Toad</h3><p>DB development</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/oracle.svg" class="tool-icon"><h3>SQL Developer</h3><p>Oracle IDE</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/dataloader.svg" class="tool-icon"><h3>Data Loader</h3><p>Bulk data import</p></div>
+  </div>
+
+  <!-- SCRIPTING -->
+<h3>Scripting Languages</h3>
+<div class="tool-grid">
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/html5.svg" class="tool-icon">
+    <h3>HTML</h3>
+    <p>Web markup</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/javascript.svg" class="tool-icon">
+    <h3>JavaScript</h3>
+    <p>Web scripting</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/python.svg" class="tool-icon">
+    <h3>Python</h3>
+    <p>Automation & analysis</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/xml.svg" class="tool-icon">
+    <h3>XML</h3>
+    <p>Data structuring</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/visualbasic.svg" class="tool-icon">
+    <h3>VB Script</h3>
+    <p>Automation scripting</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/neo4j.svg" class="tool-icon">
+    <h3>Cypher (CQL)</h3>
+    <p>Graph queries for Neo4j</p>
+  </div>
+
+</div>
+
+
+  <!-- BI TOOLS -->
+  <h3>BI Tools</h3>
+  <div class="tool-grid">
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tableau.svg" class="tool-icon"><h3>Tableau</h3><p>Data visualization</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/powerbi.svg" class="tool-icon"><h3>Power BI</h3><p>Business intelligence</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/oracle.svg" class="tool-icon"><h3>BI Publisher</h3><p>Oracle reporting</p></div>
+  </div>
+
+  <!-- ERP -->
+  <h3>ERP Applications</h3>
+  <div class="tool-grid">
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/oracle.svg" class="tool-icon"><h3>Oracle EBS 11i / R12</h3><p>Enterprise ERP</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/sap.svg" class="tool-icon"><h3>Ramco ERP Finance</h3><p>Financial ERP</p></div>
+  <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tally.svg" class="tool-icon"><h3>Tally ERP</h3><p>Accounting & payroll</p></div>
+  </div>
+
+  <!-- BROWSERS -->
+  <h3>Web Browsers</h3>
+  <div class="tool-grid">
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googlechrome.svg" class="tool-icon"><h3>Chrome</h3><p>Web browsing</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/microsoftedge.svg" class="tool-icon"><h3>Edge</h3><p>Web browsing</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/firefox.svg" class="tool-icon"><h3>Firefox</h3><p>Web browsing</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/safari.svg" class="tool-icon"><h3>Safari</h3><p>Web browsing</p></div>
+  </div>
+
+  <!-- TICKETING -->
+  <h3>Ticketing Tools</h3>
+  <div class="tool-grid">
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/jira.svg" class="tool-icon"><h3>JIRA</h3><p>Issue tracking</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/asana.svg" class="tool-icon"><h3>Asana</h3><p>Task management</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/servicenow.svg" class="tool-icon"><h3>ServiceNow</h3><p>ITSM platform</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/hp.svg" class="tool-icon"><h3>HP ALM</h3><p>Test management</p></div>
+  </div>
+
+  <!-- HCM -->
+  <h3>HCM Software</h3>
+  <div class="tool-grid">
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/oracle.svg" class="tool-icon"><h3>Oracle Fusion HCM</h3><p>HR & payroll</p></div>
+     </div>
+
+  <!-- MARKETING -->
+  <h3>Marketing & Analytics Tools</h3>
+  <div class="tool-grid">
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googleanalytics.svg" class="tool-icon"><h3>Google Analytics</h3><p>Web analytics</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/google.svg" class="tool-icon"><h3>SEO</h3><p>Search optimization</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/google.svg" class="tool-icon"><h3>Keyword Research</h3><p>Content strategy</p></div>
+    <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/openai.svg" class="tool-icon"><h3>AI Content Creation</h3><p>AI‑enabled writing</p></div>
+  </div>
+
+
+<h3>Data Skills</h3>
+<div class="tool-grid">
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/databricks.svg" class="tool-icon">
+    <h3>Data Modeling</h3>
+    <p>Schema design & relationships</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/etl.svg" class="tool-icon">
+    <h3>ETL Concepts</h3>
+    <p>Extract, transform & load workflows</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/cleanmymac.svg" class="tool-icon">
+    <h3>Data Cleaning</h3>
+    <p>Fixing inconsistencies & errors</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/jupyter.svg" class="tool-icon">
+    <h3>Data Wrangling</h3>
+    <p>Transforming raw data into insights</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/plotly.svg" class="tool-icon">
+    <h3>EDA</h3>
+    <p>Exploratory data analysis</p>
+  </div>
+
+</div>
+
+<h3>AI & Automation Skills</h3>
+<div class="tool-grid">
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/openai.svg" class="tool-icon">
+    <h3>Prompt Engineering</h3>
+    <p>Structured prompting for AI tools</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/microsoftcopilot.svg" class="tool-icon">
+    <h3>AI Automation</h3>
+    <p>AI‑powered workflow optimization</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googlecloud.svg" class="tool-icon">
+    <h3>AI in Analytics</h3>
+    <p>AI‑driven insights & analysis</p>
+  </div>
+
+</div>
+
+<h3>Business Analysis Skills</h3>
+<div class="tool-grid">
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/miro.svg" class="tool-icon">
+    <h3>Requirements Gathering</h3>
+    <p>Understanding business needs</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/uml.svg" class="tool-icon">
+    <h3>Use Case Modeling</h3>
+    <p>Functional & system flows</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/bpmn.svg" class="tool-icon">
+    <h3>BPMN</h3>
+    <p>Business process modeling</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/flowbite.svg" class="tool-icon">
+    <h3>Process Mapping</h3>
+    <p>Visualizing workflows</p>
+  </div>
+
+</div>
+
+<h3>Project Management & Agile Skills</h3>
+<div class="tool-grid">
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/scrumalliance.svg" class="tool-icon">
+    <h3>Scrum</h3>
+    <p>Agile ceremonies & execution</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/kanban.svg" class="tool-icon">
+    <h3>Kanban</h3>
+    <p>Visual workflow management</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/jira.svg" class="tool-icon">
+    <h3>Sprint Planning</h3>
+    <p>Iteration planning & tracking</p>
+  </div>
+
+</div>
+<h3>Cybersecurity Skills</h3>
+<div class="tool-grid">
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/securityscorecard.svg" class="tool-icon">
+    <h3>Threat Awareness</h3>
+    <p>Identifying risks & attacks</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/1password.svg" class="tool-icon">
+    <h3>Security Best Practices</h3>
+    <p>Safe access & password hygiene</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/phishing.svg" class="tool-icon">
+    <h3>Phishing Detection</h3>
+    <p>Recognizing malicious attempts</p>
+  </div>
+
+</div>
+
+
+
+<!-- CONTINUOUS LEARNING BLOCK -->
+  <h3>LifeLong Learner</h3>
+<div class="tool-grid" >
+  <div class="tool-card" style="grid-column: 1 / -1; padding: 30px;">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gradle.svg" class="tool-icon" style="width: 50px; height: 50px;">
+    <h3 style="margin-top: 10px;">Always Growing. Always Learning.</h3>
+    <p style="font-size: 0.9rem; color: var(--muted); max-width: 500px; margin: 0 auto;">
+      I continuously expand my technical toolkit — learning new tools, mastering modern platforms, and evolving my skills to stay ahead in data, analytics, automation, and AI‑powered workflows.
+    </p>
+  </div>
+</div>
+
+</section>
+
+
+  <section class="section" id="certifications">
+  <h2>Certifications</h2>
+
+  <!-- ===========================
+       HUMAN CAPITAL MANAGEMENT
+  ============================ -->
+  <h3>Human Capital Management</h3>
+  <table>
+    <tr>
+      <th>Certification</th>
+      <th>Provided By</th>
+      <th>Skills Learned</th>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/oracle.svg" class="cert-logo">
+          Oracle HCM Business Process Certified Foundations Associate Rel 2
+        </span>
+      </td>
+      <td>Oracle University</td>
+      <td>HCM workflows, HR processes, payroll fundamentals, system navigation</td>
+    </tr>
+  </table>
+
+  <!-- ===========================
+       AI, DATA & ANALYTICS
+  ============================ -->
+  <h3>AI, Data & Analytics</h3>
+  <table>
+    <tr>
+      <th>Certification</th>
+      <th>Provided By</th>
+      <th>Skills Learned</th>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Santander_Logo.svg" class="cert-logo">
+          Copilot: Master AI in Microsoft 365
+        </span>
+      </td>
+      <td>Santander Open Academy</td>
+      <td>AI productivity, automation, prompt engineering</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/hp.svg" class="cert-logo">
+          Customer Relationship Management
+        </span>
+      </td>
+      <td>HP Life | HP Foundation</td>
+      <td>CRM concepts, customer lifecycle, service optimization</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/hp.svg" class="cert-logo">
+          AI for Business Professionals
+        </span>
+      </td>
+      <td>HP Life | HP Foundation</td>
+      <td>AI fundamentals, business use cases, automation strategy</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/hp.svg" class="cert-logo">
+          AI for Beginners
+        </span>
+      </td>
+      <td>HP Life | HP Foundation</td>
+      <td>AI basics, ML concepts, real-world applications</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/hp.svg" class="cert-logo">
+          Data Science & Analytics
+        </span>
+      </td>
+      <td>HP Life | HP Foundation</td>
+      <td>Data analysis, visualization, data cleaning, insights</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/hp.svg" class="cert-logo">
+          Customer Experience (CX) for Business Success
+        </span>
+      </td>
+      <td>HP Life | HP Foundation</td>
+      <td>CX strategy, customer journey mapping, service design</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/databricks.svg" class="cert-logo">
+          Generative AI Fundamentals
+        </span>
+      </td>
+      <td>Databricks Academy</td>
+      <td>GenAI basics, LLM concepts, prompt engineering</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/meta.svg" class="cert-logo">
+          GenAI in Data Analytics
+        </span>
+      </td>
+      <td>Meta via Coursera</td>
+      <td>AI-assisted analytics, data transformation, insight generation</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/mysql.svg" class="cert-logo">
+          SQL Certification
+        </span>
+      </td>
+      <td>One Roadmap</td>
+      <td>SQL queries, joins, subqueries, data modeling</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/microsoftexcel.svg" class="cert-logo">
+          Excel Certification
+        </span>
+      </td>
+      <td>One Roadmap</td>
+      <td>Excel formulas, PivotTables, Power Query</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/analytics.svg" class="cert-logo">
+          Data Analyst Certification
+        </span>
+      </td>
+      <td>One Roadmap</td>
+      <td>Data analysis, reporting, visualization</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tableau.svg" class="cert-logo">
+          Tableau Training
+        </span>
+      </td>
+      <td>SkillUp | Simplilearn</td>
+      <td>Dashboard design, data visualization, storytelling</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/neo4j.svg" class="cert-logo">
+          Neo4j Certified Professional
+        </span>
+      </td>
+      <td>Neo4j</td>
+      <td>Graph databases, Cypher queries, graph modeling</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Udacity_logo.png/512px-Udacity_logo.png" class="cert-logo">
+          AWS AI Practitioner Challenge Certification
+        </span>
+      </td>
+      <td>Udacity</td>
+      <td>Cloud AI concepts, AWS AI tools, ML basics</td>
+    </tr>
+ 
+
+<tr>
+  <td>
+    <span class="cert-badge">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/HackerRank_logo.png" class="cert-logo">
+      SQL (Basic) Skill Certification Test
+    </span>
+  </td>
+  <td>HackerRank</td>
+  <td>Basic SQL queries, filtering, sorting, joins, aggregation</td>
+</tr>
+<tr>
+  <td>
+    <span class="cert-badge">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/HackerRank_logo.png" class="cert-logo">
+      SQL (Intermediate) Skill Certification Test
+    </span>
+  </td>
+  <td>HackerRank</td>
+  <td>Advanced joins, subqueries, window functions, grouping, query optimization</td>
+</tr>
+
+
+ </table>
+  <!-- ===========================
+       CYBERSECURITY
+  ============================ -->
+  <h3>Cybersecurity</h3>
+  <table>
+    <tr>
+      <th>Certification</th>
+      <th>Provided By</th>
+      <th>Skills Learned</th>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/hp.svg" class="cert-logo">
+          Introduction to Cybersecurity Awareness
+        </span>
+      </td>
+      <td>HP Life | HP Foundation</td>
+      <td>Cyber hygiene, threat awareness, safe computing</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Deloitte_logo.svg/512px-Deloitte_logo.svg.png" class="cert-logo">
+          Deloitte Australia's Cyber Job Simulation
+        </span>
+      </td>
+      <td>Forage</td>
+      <td>Security analysis, incident response, cyber workflows</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/hackthebox.svg" class="cert-logo">
+          Cybersecurity Career Starter Certification (CCSC)
+        </span>
+      </td>
+      <td>Hack&Fix Academy</td>
+      <td>Security fundamentals, vulnerability basics, risk awareness</td>
+    </tr>
+  </table>
+
+  <!-- ===========================
+       BUSINESS ANALYSIS & FINANCE
+  ============================ -->
+  <h3>Business Analysis & Finance</h3>
+  <table>
+    <tr>
+      <th>Certification</th>
+      <th>Provided By</th>
+      <th>Skills Learned</th>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/udemy.svg" class="cert-logo">
+          CBAP – Business Analysis Professional Course
+        </span>
+      </td>
+      <td>Udemy</td>
+      <td>Requirements analysis, BA frameworks, process mapping</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="<img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/CFI_logo.svg" class="cert-logo">
+
+          Excel Crash Course – Spreadsheet Formulas for Finance
+        </span>
+      </td>
+      <td>Corporate Finance Institute (CFI)</td>
+      <td>Financial modeling, Excel formulas, analytical workflows</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/CFI_logo.svg" class="cert-logo">
+          Reading Financial Statements
+        </span>
+      </td>
+      <td>Corporate Finance Institute (CFI)</td>
+      <td>Financial analysis, accounting basics, business insights</td>
+    </tr>
+  </table>
+
+  <!-- ===========================
+       PROJECT MANAGEMENT & AGILE
+  ============================ -->
+  <h3>Project Management & Agile</h3>
+  <table>
+    <tr>
+      <th>Certification</th>
+      <th>Provided By</th>
+      <th>Skills Learned</th>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/hp.svg" class="cert-logo">
+          Agile Project Management
+        </span>
+      </td>
+      <td>HP Life | HP Foundation</td>
+      <td>Agile principles, sprint planning, iterative workflows</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Cognizant_logo_2022.svg/512px-Cognizant_logo_2022.svg.png" class="cert-logo">
+          Agile Methodology Virtual Experience Program
+        </span>
+      </td>
+      <td>Cognizant via Forage</td>
+      <td>Agile workflows, user stories, backlog management</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/scrumalliance.svg" class="cert-logo">
+          SCRUM MASTER Accredited Certification
+        </span>
+      </td>
+      <td>International Scrum Institute</td>
+      <td>Scrum framework, ceremonies, team facilitation</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/msi.svg" class="cert-logo">
+          Project Management Essentials Certification
+        </span>
+      </td>
+      <td>Management & Strategy Institute</td>
+      <td>PM fundamentals, planning, risk management</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://goleansixsigma.com/wp-content/uploads/2015/04/GoLeanSixSigma.com_.png" class="cert-logo">
+          Lean Six Sigma White Belt
+        </span>
+      </td>
+      <td>GoLeanSixSigma</td>
+      <td>Lean principles, waste reduction, process improvement</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://www.sixsigmaonline.org/wp-content/uploads/2020/09/sso-logo.png" class="cert-logo">
+          Six Sigma White Belt
+        </span>
+      </td>
+      <td>SixSigmaOnline</td>
+      <td>Six Sigma basics, quality improvement, process control</td>
+    </tr>
+  </table>
+
+  <!-- ===========================
+       BADGES
+  ============================ -->
+  <h3>Badges</h3>
+  <table>
+    <tr>
+      <th>Badge</th>
+      <th>Provided By</th>
+      <th>Skills Learned</th>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Project_Management_Institute_logo.svg" class="cert-logo">
+          Fundamentals of Predictive Project Management
+        </span>
+      </td>
+      <td>Project Management Institute (PMI)</td>
+      <td>Predictive PM, planning, scheduling, risk control</td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="cert-badge">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Project_Management_Institute_logo.svg" class="cert-logo">
+          Fundamentals of Agile Project Management
+        </span>
+      </td>
+      <td>Project Management Institute (PMI)</td>
+      <td>Agile mindset, iterative delivery, team collaboration</td>
+    </tr>
+  </table>
+
+</section>
+
+  <footer class="py-6 text-center text-[11px] text-muted">
+    © <span id="year"></span> Gaya V — SQL & Data Analytics Portfolio
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+    
